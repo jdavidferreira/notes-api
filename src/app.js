@@ -11,10 +11,10 @@ mongoose.connection.on('error', e => console.error(e))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-const notesRouter = require('./routes/notes')
+const todosRouter = require('./routes/todos')
 const authRouter = require('./routes/auth')
 
-app.use('/note', notesRouter)
+app.use('/todo', todosRouter)
 app.use('/user', authRouter)
 
 module.exports = app
