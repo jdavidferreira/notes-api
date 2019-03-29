@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
-const Todo = mongoose.model('Todo')
+const Note = mongoose.model('Note')
 
 exports.findAll = async (_req, res) => {
   try {
-    let todos = await Todo.find({ user: res.locals.userId})
+    let notes = await Note.find({ user: res.locals.userId})
 
-    res.json(todos)
+    res.json(notes)
   } catch (e) {
     res.status(400).send(e)
   }
@@ -13,24 +13,23 @@ exports.findAll = async (_req, res) => {
 
 exports.findById = async (req, res) => {
   try {
-    let todo = await Todo.findOne({ _id: req.params.id, user: res.locals.userId })
+    let note = await Note.findOne({ _id: req.params.id, user: res.locals.userId })
 
-    res.json(todo)
+    res.json(note)
   } catch (e) {
     res.status(422).send(e)
   }
 }
 
-
 exports.create = async (req, res) => {
-  const todo = {
+  const note = {
     title: req.body.title,
     body: req.body.body,
     user: res.locals.userId
   }
 
   try {
-    let created = await Todo.create(todo)
+    let created = await Note.create(note)
 
     res.json(created)
   } catch (err) {
@@ -40,7 +39,7 @@ exports.create = async (req, res) => {
 
 exports.delete = async (req, res) => {
   try {
-    await Todo.deleteOne({ _id: req.params.id, user: res.locals.userId })
+    await Note.deleteOne({ _id: req.params.id, user: res.locals.userId })
   } catch (err) {
     res.status(500).send(err)
   }
@@ -48,13 +47,13 @@ exports.delete = async (req, res) => {
 
 exports.update = async (req, res) => {
   try {
-    let todo = {
+    let note = {
       _id: req.params.id,
       title: req.body.title,
       body: req.body.body
     }
 
-    let updated = await Todo.updateOne({ _id: todo._id, user: res.locals.userId }, { title: todo.title, body: todo.body })
+    let updated = await Note.updateOne({ _id: note._id, user: res.locals.userId }, { title: note.title, body: note.body })
     
     res.json(updated)
   } catch (err) {

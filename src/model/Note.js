@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const TodoSchema = mongoose.Schema({
+const NoteSchema = mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -16,6 +16,6 @@ const TodoSchema = mongoose.Schema({
     ref: 'User',
     required: true
   }
-}, { collection: 'todo', versionKey: false })
+}, { collection: 'note', versionKey: false })
 
-module.exports = mongoose.model("Todo", TodoSchema)
+module.exports = mongoose.model("Note", NoteSchema)
