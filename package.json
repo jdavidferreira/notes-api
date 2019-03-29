@@ -2,7 +2,10 @@
   "name": "todos-api",
   "version": "0.1.0",
   "description": "WebAPI REST with Express + MongoDB",
-  "keywords": [ "Express", "Mongoose" ],
+  "keywords": [
+    "Express",
+    "Mongoose"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +13,7 @@
   "author": "David Ferreira",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
@@ -17,7 +21,7 @@
     "validator": "^10.11.0"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/mrjdavidfg/polls-app.git"
+    "type": "git",
+    "url": "https://github.com/mrjdavidfg/polls-app.git"
   }
 }

@@ -1,12 +1,13 @@
 const jwt = require("jsonwebtoken")
 
 exports.requireUser = async (req, res, next) => {
-  const token = req.cookies.get('token')
+  const token = req.cookies.token
 
   if (token) {
     try {
       const decoded = await jwt.verify(token, process.env.SECRET_KEY || 'secretCode')
-      const userId = decoded.userId
+      
+      res.locals.userId = decoded.userId
   
       next()
     } catch (error) {

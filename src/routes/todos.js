@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const todo = require('../controller/todo')
+const requireUser = require('../middlewares').requireUser
+
+router.use('/', requireUser)
 
 router
   .route('/')
